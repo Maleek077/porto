@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M. ZAENI DAHLAN | Civil Engineering Student</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        zinc: {
+                            950: '#09090b',
+                        },
+                        primary: '#f97316', // Safety Orange (Civil Engineering Theme)
+                    },
+                    fontFamily: {
+                        heading: ['Space Grotesk', 'sans-serif'],
+                        body: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        '3xl': '1.5rem',
+                        '4xl': '2rem',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #09090b;
+            color: #ffffff;
+        }
+        h1, h2, h3, .font-heading {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .glass-nav {
+            background: rgba(9, 9, 11, 0.8);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(249, 115, 22, 0.2);
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .civil-pattern {
+            background-image: radial-gradient(rgba(249, 115, 22, 0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+        .glow-orange:hover {
+            box-shadow: 0 0 25px rgba(249, 115, 22, 0.4);
+        }
+        .step-card:hover {
+            border-color: #f97316;
+            background: rgba(249, 115, 22, 0.05);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #09090b; }
+        ::-webkit-scrollbar-thumb { background: #27272a; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #f97316; }
+    </style>
+</head>
+<body class="selection:bg-primary selection:text-white civil-pattern">
+
+    <!-- NAVBAR -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 py-6">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="bg-primary text-white font-bold w-12 h-12 flex items-center justify-center rounded-xl text-xl shadow-lg shadow-primary/20">MZD</div>
+                <div class="hidden sm:block">
+                    <span class="text-xl font-heading font-bold tracking-tight block leading-none uppercase">M. ZAENI DAHLAN</span>
+                    <span class="text-[10px] text-primary font-bold tracking-[0.2em] uppercase">Civil Engineering</span>
+                </div>
+            </div>
+            
+            <!-- Desktop Links -->
+            <div class="hidden md:flex items-center gap-10 text-zinc-400 font-semibold text-sm">
+                <a href="#about" class="hover:text-primary transition-colors">Profil</a>
+                <a href="#experience" class="hover:text-primary transition-colors">Pengalaman</a>
+                <a href="#education" class="hover:text-primary transition-colors">Pendidikan</a>
+                <a href="#contact" class="bg-primary text-white px-7 py-2.5 rounded-full font-bold hover:scale-105 transition-transform glow-orange">Hubungi Saya</a>
+            </div>
+
+            <!-- Mobile Toggle -->
+            <button id="menu-btn" class="md:hidden text-white p-2">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-zinc-950 border-b border-zinc-800 p-8 flex-col gap-6 text-center shadow-2xl">
+            <a href="#about" class="text-lg font-medium text-zinc-400">Profil</a>
+            <a href="#experience" class="text-lg font-medium text-zinc-400">Pengalaman</a>
+            <a href="#education" class="text-lg font-medium text-zinc-400">Pendidikan</a>
+            <a href="#contact" class="py-4 bg-primary text-white rounded-2xl font-bold">Hubungi Saya</a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        <div class="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+            <div class="reveal z-10">
+                <div class="inline-flex items-center gap-2 text-primary mb-6 bg-primary/10 px-4 py-2 rounded-lg border border-primary/20">
+                    <i data-lucide="hard-hat" class="w-4 h-4"></i>
+                    <span class="text-xs font-black uppercase tracking-[0.2em]">Future Civil Engineer</span>
+                </div>
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-[1.1]">
+                    Membangun Masa Depan <span class="text-primary italic">Presisi.</span>
+                </h1>
+                <p class="text-zinc-400 text-lg mb-10 max-w-lg leading-relaxed">
+                    Halo, saya <span class="text-white font-bold">M. ZAENI DAHLAN</span>. Mahasiswa Teknik Sipil semester 2 di Politeknik Negeri Sriwijaya dengan dedikasi tinggi dalam kepemimpinan dan manajemen organisasi.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#experience" class="px-8 py-4 bg-primary text-white font-bold rounded-2xl flex items-center justify-center gap-3 hover:translate-y-[-2px] transition-all glow-orange">
+                        Lihat Pengalaman <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </a>
+                    <div class="flex items-center gap-4 px-6 py-4 bg-zinc-900/50 rounded-2xl border border-zinc-800">
+                        <i data-lucide="instagram" class="text-primary"></i>
+                        <span class="text-sm font-bold">@zaenidhlln_</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative reveal hidden lg:flex justify-end">
+                <div class="relative">
+                    <!-- Decorative Elements -->
+                    <div class="absolute -top-10 -left-10 w-32 h-32 border-t-4 border-l-4 border-primary rounded-tl-3xl"></div>
+                    <div class="absolute -bottom-10 -right-10 w-32 h-32 border-b-4 border-r-4 border-primary rounded-br-3xl"></div>
+                    
+                    <div class="w-[450px] aspect-[4/5] bg-zinc-900 rounded-3xl border border-zinc-800 overflow-hidden shadow-2xl relative group">
+                        <!-- Portrait Image -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 to-transparent z-10"></div>
+                        <img src="https://image2url.com/r2/default/images/1773915422703-6cca87cc-aad3-4a88-af7f-4212c5639bba.jpeg" 
+                             alt="M. ZAENI DAHLAN - Civil Engineering Student" 
+                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                             onerror="this.src='https://ui-avatars.com/api/?name=M+Zaeni+Dahlan&background=18181b&color=f97316&size=512'">
+                        
+                        <div class="absolute bottom-8 left-8 right-8 z-20">
+                            <h3 class="text-2xl font-bold mb-1 uppercase tracking-tight">M. ZAENI DAHLAN</h3>
+                            <p class="text-primary font-bold text-sm tracking-widest uppercase">Teknik Sipil POLSRI</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT / STATS -->
+    <section id="about" class="py-24 bg-zinc-900/20 border-y border-zinc-900">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="reveal p-8 bg-zinc-900/50 rounded-3xl border border-zinc-800 text-center hover:border-primary/50 transition-colors">
+                    <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i data-lucide="graduation-cap" class="text-primary"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-2">Semester 2</h3>
+                    <p class="text-zinc-500 uppercase text-xs font-bold tracking-widest">Akademik</p>
+                </div>
+                <div class="reveal p-8 bg-zinc-900/50 rounded-3xl border border-zinc-800 text-center hover:border-primary/50 transition-colors" style="transition-delay: 100ms">
+                    <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i data-lucide="users" class="text-primary"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-2">Ketua Pelaksana</h3>
+                    <p class="text-zinc-500 uppercase text-xs font-bold tracking-widest">Kepemimpinan</p>
+                </div>
+                <div class="reveal p-8 bg-zinc-900/50 rounded-3xl border border-zinc-800 text-center hover:border-primary/50 transition-colors" style="transition-delay: 200ms">
+                    <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i data-lucide="building-2" class="text-primary"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-2">Humas</h3>
+                    <p class="text-zinc-500 uppercase text-xs font-bold tracking-widest">Komunikasi</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE SECTION -->
+    <section id="experience" class="py-32">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <div class="reveal mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6">Jejak <span class="text-primary">Organisasi</span></h2>
+                    <div class="h-1.5 w-24 bg-primary rounded-full"></div>
+                </div>
+
+                <div class="space-y-8">
+                    <!-- Exp 1 -->
+                    <div class="reveal group bg-zinc-900 border border-zinc-800 p-8 rounded-4xl step-card transition-all duration-300">
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
+                            <div class="flex items-center gap-5">
+                                <div class="w-12 h-12 bg-primary rounded-2xl flex items-center justify-center text-white shrink-0">
+                                    <i data-lucide="calendar-check"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-2xl font-bold">Ketua Pelaksana Campus Expo</h3>
+                                    <p class="text-primary font-bold">SMA N 22 Palembang</p>
+                                </div>
+                            </div>
+                            <span class="px-5 py-2 bg-zinc-800 rounded-full text-xs font-bold text-zinc-400 border border-zinc-700">Project Leader</span>
+                        </div>
+                        <p class="text-zinc-400 leading-relaxed">
+                            Mengkoordinir seluruh rangkaian acara Campus Expo, memastikan kolaborasi antar divisi berjalan lancar, dan sukses menghadirkan informasi perguruan tinggi kepada ratusan siswa kelas XII.
+                        </p>
+                    </div>
+
+                    <!-- Exp 2 -->
+                    <div class="reveal group bg-zinc-900 border border-zinc-800 p-8 rounded-4xl step-card transition-all duration-300">
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
+                            <div class="flex items-center gap-5">
+                                <div class="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center text-primary shrink-0 border border-primary/20">
+                                    <i data-lucide="megaphone"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-2xl font-bold">Ketua Bidang Humas</h3>
+                                    <p class="text-primary font-bold">Rohis Fiisabilillah SMA N 22 Palembang</p>
+                                </div>
+                            </div>
+                            <span class="px-5 py-2 bg-zinc-800 rounded-full text-xs font-bold text-zinc-400 border border-zinc-700">Public Relations</span>
+                        </div>
+                        <p class="text-zinc-400 leading-relaxed">
+                            Bertanggung jawab dalam membangun hubungan eksternal, mengelola alur informasi organisasi, serta menjalin kerja sama dengan pihak sekolah dan organisasi lain di Palembang.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDUCATION SECTION -->
+    <section id="education" class="py-32 bg-zinc-950 relative overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-20 items-center">
+                <div class="reveal order-2 lg:order-1">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-primary/20 blur-[100px] rounded-full"></div>
+                        <div class="relative bg-zinc-900 border border-zinc-800 p-10 rounded-4xl">
+                            <div class="flex items-center gap-4 mb-8">
+                                <i data-lucide="book-open" class="text-primary w-8 h-8"></i>
+                                <h2 class="text-3xl font-bold">Pendidikan Saat Ini</h2>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-2 uppercase">Politeknik Negeri Sriwijaya</h3>
+                            <p class="text-primary font-bold mb-6">D4/S1 Teknik Sipil (Fakultas Teknik)</p>
+                            <div class="space-y-4">
+                                <div class="flex items-center gap-3 text-zinc-400">
+                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-primary"></i>
+                                    <span>Fokus pada Manajemen Konstruksi & Infrastruktur</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-zinc-400">
+                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-primary"></i>
+                                    <span>Aktif dalam pengembangan soft skill organisasi</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-zinc-400">
+                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-primary"></i>
+                                    <span>Angkatan 2025 - Semester 2</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="reveal order-1 lg:order-2">
+                    <span class="text-primary font-bold uppercase tracking-[0.3em] text-xs mb-4 block">Academic Path</span>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-8">Investasi Ilmu untuk <span class="text-primary">Infrastruktur.</span></h2>
+                    <p class="text-zinc-500 text-lg leading-relaxed mb-8">
+                        Menempuh pendidikan di salah satu Politeknik terbaik di Indonesia memberikan saya perspektif praktis dan teoritis yang seimbang dalam dunia teknik sipil.
+                    </p>
+                    <div class="inline-block px-8 py-4 border border-zinc-800 rounded-2xl bg-zinc-900/50">
+                        <span class="text-zinc-400">Domisili:</span>
+                        <span class="text-white font-bold ml-2">Palembang, Indonesia</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="py-32">
+        <div class="container mx-auto px-6">
+            <div class="max-w-5xl mx-auto bg-zinc-900 border border-zinc-800 rounded-[3rem] overflow-hidden flex flex-col lg:flex-row reveal shadow-2xl">
+                <div class="lg:w-1/2 p-12 lg:p-16 bg-gradient-to-br from-primary to-orange-700 text-white flex flex-col justify-between">
+                    <div>
+                        <h2 class="text-4xl font-bold mb-8">Ayo Berdiskusi!</h2>
+                        <p class="text-white/80 mb-12 text-lg">Tertarik untuk berkolaborasi dalam project teknik sipil atau kegiatan organisasi? Saya selalu terbuka untuk ide baru.</p>
+                        
+                        <div class="space-y-8">
+                            <a href="mailto:zaenid07@gmail.com" class="flex items-center gap-5 group">
+                                <div class="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center backdrop-blur-sm group-hover:bg-white/40 transition-all">
+                                    <i data-lucide="mail"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-bold opacity-70 uppercase">Email</p>
+                                    <p class="font-bold">zaenid07@gmail.com</p>
+                                </div>
+                            </a>
+                            <a href="https://instagram.com/zaenidhlln_" target="_blank" class="flex items-center gap-5 group">
+                                <div class="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center backdrop-blur-sm group-hover:bg-white/40 transition-all">
+                                    <i data-lucide="instagram"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-bold opacity-70 uppercase">Instagram</p>
+                                    <p class="font-bold">@zaenidhlln_</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-16 pt-8 border-t border-white/20">
+                        <p class="text-sm font-bold tracking-widest opacity-60 uppercase">SMA N 22 Palembang Alumni</p>
+                    </div>
+                </div>
+
+                <div class="lg:w-1/2 p-12 lg:p-16">
+                    <form class="space-y-6" onsubmit="event.preventDefault(); document.getElementById('success-msg').classList.remove('hidden');">
+                        <div class="space-y-2">
+                            <label class="text-xs font-bold text-zinc-500 uppercase tracking-widest ml-1">Nama Lengkap</label>
+                            <input type="text" value="M. ZAENI DAHLAN" required class="w-full bg-zinc-950 border border-zinc-800 rounded-2xl px-6 py-4 focus:border-primary focus:outline-none transition-all placeholder:text-zinc-700" placeholder="Masukkan nama Anda">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-xs font-bold text-zinc-500 uppercase tracking-widest ml-1">Pesan</label>
+                            <textarea rows="5" required class="w-full bg-zinc-950 border border-zinc-800 rounded-2xl px-6 py-4 focus:border-primary focus:outline-none transition-all placeholder:text-zinc-700" placeholder="Apa yang ingin Anda sampaikan?"></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-5 bg-primary text-white font-bold rounded-2xl hover:translate-y-[-2px] transition-all glow-orange text-lg">
+                            Kirim Pesan
+                        </button>
+                        <div id="success-msg" class="hidden text-center text-primary font-bold animate-pulse mt-4">
+                            <i data-lucide="check" class="inline w-4 h-4 mr-1"></i> Pesan terkirim (Simulasi)
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-12 border-t border-zinc-900 bg-zinc-950">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+                <div class="flex items-center gap-3">
+                    <div class="bg-primary text-white font-bold w-10 h-10 flex items-center justify-center rounded-lg text-lg">MZD</div>
+                    <span class="text-lg font-heading font-bold uppercase">M. ZAENI DAHLAN</span>
+                </div>
+                
+                <p class="text-zinc-600 text-sm">
+                    &copy; 2024 M. ZAENI DAHLAN. Crafted with Civil Precision.
+                </p>
+
+                <div class="flex gap-6">
+                    <a href="https://instagram.com/zaenidhlln_" target="_blank" class="text-zinc-400 hover:text-primary transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                    <a href="#" class="text-zinc-400 hover:text-primary transition-colors"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Navbar Interaction
+        const nav = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('glass-nav');
+                nav.classList.remove('py-6');
+                nav.classList.add('py-4');
+            } else {
+                nav.classList.remove('glass-nav');
+                nav.classList.add('py-6');
+                nav.classList.remove('py-4');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+        });
+
+        // Close mobile menu on click link
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('flex');
+            });
+        });
+
+        // Scroll Reveal Animation
+        const revealCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(revealCallback, {
+            threshold: 0.1
+        });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Smooth Scrolling logic
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
