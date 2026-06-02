@@ -1,276 +1,743 @@
-import React, { useState, useEffect } from 'react';
-import { 
-  HardHat, 
-  Users, 
-  Mail, 
-  MapPin, 
-  GraduationCap, 
-  Briefcase, 
-  Trophy, 
-  Instagram,
-  Linkedin,
-  ChevronDown,
-  BookOpen,
-  CheckCircle2,
-  Megaphone
-} from 'lucide-react';
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio | M. Zaeni Dahlan</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0284c7', /* Ocean Blue khas Teknik Sipil */
+                            600: '#0369a1',
+                            700: '#075985',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .dark ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #334155;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300 min-h-screen flex flex-col font-sans">
 
-const App = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  // Deteksi scroll untuk efek dinamis pada Navbar
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const data = {
-    nama: "M. ZAENI DAHLAN",
-    kampus: "Politeknik Negeri Sriwijaya",
-    jurusan: "D3 Teknik Sipil",
-    email: "zaenid07@gmail.com",
-    instagram: "zaenid_hlln",
-    lokasi: "Palembang, Indonesia",
-    deskripsi: "Mahasiswa D3 Teknik Sipil di Politeknik Negeri Sriwijaya yang berfokus pada manajemen konstruksi dan perencanaan struktur. Berjiwa kepemimpinan tinggi dengan pengalaman organisasi taktis di BEM serta pengalaman mengelola event skala besar.",
-    pendidikan: [
-      { jenjang: "Perguruan Tinggi", nama: "Politeknik Negeri Sriwijaya", detail: "D3 Teknik Sipil (Aktif)" },
-      { jenjang: "SMA", nama: "SMA Negeri 22 Palembang", detail: "MIPA (Lulus 2023)" },
-      { jenjang: "SMP", nama: "SMP Negeri 46 Palembang", detail: "Lulus 2020" },
-      { jenjang: "SD", nama: "SD Negeri 127 Palembang", detail: "Lulus 2017" }
-    ],
-    pengalaman: [
-      {
-        id: 1,
-        posisi: "Staff Muda Departemen Kastrat",
-        organisasi: "BEM Politeknik Negeri Sriwijaya",
-        periode: "2026 - Sekarang",
-        detail: "Bergerak di Divisi Aksi Strategi dan Propaganda. Bertanggung jawab dalam mengkaji isu-isu strategis internal maupun eksternal kampus, merumuskan taktik aksi advokasi, serta menyusun narasi propaganda kreatif untuk menyuarakan aspirasi mahasiswa secara taktis dan terstruktur.",
-        icon: <Megaphone className="text-amber-400" />
-      },
-      {
-        id: 2,
-        posisi: "Ketua Pelaksana",
-        organisasi: "Campus Expo SMAN 22 Palembang",
-        periode: "2025 - 2026",
-        detail: "Memimpin koordinasi antar divisi, manajemen anggaran operasional, serta menjalin kemitraan strategis dengan berbagai perguruan tinggi negeri dan swasta untuk menyukseskan pameran pendidikan edukatif.",
-        icon: <Trophy className="text-amber-400" />
-      },
-      {
-        id: 3,
-        posisi: "Ketua Bidang Humas",
-        organisasi: "Rohis Fiisabilillah SMAN 22 Palembang",
-        periode: "2024 - 2025",
-        detail: "Mengelola hubungan eksternal lembaga, merancang publikasi media kreatif, dan memperluas jejaring kolaborasi antar organisasi kepemudaan di tingkat regional.",
-        icon: <Users className="text-amber-400" />
-      }
-    ],
-    keahlian: [
-      { nama: "AutoCAD", level: "Intermediate" },
-      { nama: "SAP2000", level: "Beginner" },
-      { nama: "Estimasi Biaya (RAB)", level: "Advanced" },
-      { nama: "Aksi & Advokasi", level: "Advanced" },
-      { nama: "Manajemen Proyek", level: "Intermediate" },
-      { nama: "Surveying", level: "Intermediate" }
-    ]
-  };
-
-  return (
-    <div className="min-h-screen bg-[#0a0a0a] text-gray-100 font-sans selection:bg-amber-400 selection:text-black scroll-smooth">
-      
-      {/* Navigation */}
-      <nav className={`fixed w-full z-50 transition-all duration-500 ${isScrolled ? 'bg-black/90 backdrop-blur-md py-4 border-b border-amber-400/20 shadow-2xl' : 'bg-transparent py-6'}`}>
-        <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
-          <div className="text-2xl font-black tracking-tighter text-amber-400 italic">
-            MZD<span className="text-white">.CIVIL</span>
-          </div>
-          <div className="hidden md:flex space-x-8 text-xs font-bold uppercase tracking-widest items-center">
-            <a href="#home" className="hover:text-amber-400 transition text-white no-underline">Beranda</a>
-            <a href="#profil" className="hover:text-amber-400 transition text-white no-underline">Profil</a>
-            <a href="#organisasi" className="hover:text-amber-400 transition text-white no-underline">Organisasi</a>
-            <a href="#kontak" className="bg-amber-400 text-black px-6 py-2.5 rounded-full hover:bg-white transition no-underline shadow-lg font-black tracking-tighter">Hubungi Kontak</a>
-          </div>
-        </div>
-      </nav>
-
-      {/* Hero Section */}
-      <section id="home" className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden">
-        {/* Background Glows */}
-        <div className="absolute top-1/4 -left-20 w-96 h-96 bg-amber-500/10 rounded-full blur-[120px]"></div>
-        <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-amber-400/10 rounded-full blur-[120px]"></div>
-
-        <div className="max-w-5xl w-full text-center z-10">
-          <div className="inline-flex items-center space-x-2 bg-white/5 border border-white/10 px-4 py-2 rounded-full mb-8">
-            <HardHat size={16} className="text-amber-400 animate-bounce" />
-            <span className="text-[10px] font-bold tracking-widest uppercase text-amber-400">Civil Engineering & Student Activist</span>
-          </div>
-          
-          <h1 className="text-6xl md:text-9xl font-black tracking-tighter mb-8 leading-[0.9] italic uppercase text-white">
-            DESIGN <br />
-            <span className="text-amber-400 italic text-7xl md:text-[10rem]">STRUKTUR</span>
-          </h1>
-          
-          <p className="text-lg md:text-2xl text-gray-400 mb-10 max-w-3xl mx-auto leading-relaxed">
-            Mahasiswa <span className="text-white font-bold italic underline decoration-amber-400 decoration-2 underline-offset-4">Teknik Sipil</span> di Politeknik Negeri Sriwijaya yang memadukan keahlian struktural dengan kepemimpinan taktis organisasi.
-          </p>
-
-          <div className="flex flex-col md:flex-row items-center justify-center gap-5">
-            <a href="#profil" className="bg-amber-400 text-black px-12 py-5 rounded-2xl font-black text-xl hover:shadow-[0_0_30px_rgba(251,191,36,0.5)] hover:-translate-y-1 transition duration-300 w-full md:w-auto text-center no-underline uppercase tracking-tighter">
-              Eksplorasi Profil
-            </a>
-            <a href="#kontak" className="bg-white/5 border border-white/10 px-12 py-5 rounded-2xl font-black text-xl hover:bg-white/10 transition duration-300 w-full md:w-auto text-center text-white no-underline uppercase tracking-tighter">
-              Diskusi Kolaborasi
-            </a>
-          </div>
-        </div>
-
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-amber-400/50">
-          <ChevronDown size={40} />
-        </div>
-      </section>
-
-      {/* Profile & Education Section */}
-      <section id="profil" className="py-32 px-6 bg-zinc-950/50 border-t border-white/5">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-20">
-          <div>
-            <div className="mb-12">
-              <h2 className="text-amber-400 font-black uppercase tracking-[0.3em] text-sm mb-4 italic">Education History</h2>
-              <h3 className="text-5xl font-black text-white italic uppercase tracking-tighter">Riwayat <span className="text-amber-400">Pendidikan</span></h3>
-            </div>
-
-            <div className="space-y-12 relative">
-              {data.pendidikan.map((edu, index) => (
-                <div key={index} className="flex gap-8 relative group">
-                  {index !== data.pendidikan.length - 1 && (
-                    <div className="absolute left-[27px] top-[55px] bottom-[-45px] w-[2px] bg-gradient-to-b from-amber-400/40 to-transparent"></div>
-                  )}
-                  <div className="bg-zinc-900 border border-amber-400/20 p-4 rounded-2xl h-fit z-10 group-hover:bg-amber-400 group-hover:text-black transition-all duration-500 shadow-xl text-amber-400">
-                    <GraduationCap size={28} />
-                  </div>
-                  <div className="pt-1">
-                    <span className="text-[10px] font-black uppercase tracking-widest text-amber-500/60">{edu.jenjang}</span>
-                    <h4 className="text-2xl font-bold text-white group-hover:text-amber-400 transition-colors mt-1">{edu.nama}</h4>
-                    <p className="text-gray-400 font-medium mt-1">{edu.detail}</p>
-                  </div>
+    <!-- -->
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="#home" class="text-xl font-bold bg-gradient-to-r from-primary-500 to-sky-600 bg-clip-text text-transparent flex items-center gap-2">
+                        <i data-lucide="hard-hat" class="w-6 h-6 text-primary-500"></i>
+                        <span>mzdahlan.</span>
+                    </a>
                 </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="space-y-8">
-             <div className="bg-gradient-to-br from-zinc-900 to-black p-10 rounded-[3rem] border border-white/5 shadow-2xl relative overflow-hidden group">
-                <div className="absolute top-0 right-0 p-8 text-amber-400/5 group-hover:text-amber-400/10 transition-colors">
-                  <HardHat size={120} />
-                </div>
-                <div className="flex items-center gap-5 mb-8 relative z-10">
-                  <div className="bg-amber-400 p-4 rounded-2xl text-black shadow-lg">
-                    <HardHat size={32} />
-                  </div>
-                  <div>
-                    <h4 className="text-2xl font-black text-white italic tracking-tighter uppercase">Tentang Saya</h4>
-                    <div className="h-1 w-12 bg-amber-400"></div>
-                  </div>
-                </div>
-                <p className="text-gray-400 leading-relaxed italic text-lg text-justify mb-10 relative z-10">
-                  "{data.deskripsi}"
-                </p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 relative z-10">
-                  {data.keahlian.map((skill) => (
-                    <div key={skill.nama} className="bg-white/5 border border-white/5 px-4 py-3 rounded-xl flex items-center justify-between group/skill hover:border-amber-400 transition-all duration-300">
-                      <span className="text-xs font-bold text-amber-100 uppercase tracking-widest">{skill.nama}</span>
-                      <CheckCircle2 size={14} className="text-amber-400 opacity-50 group-hover/skill:opacity-100" />
-                    </div>
-                  ))}
-                </div>
-             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Organization Section */}
-      <section id="organisasi" className="py-32 px-6 border-y border-white/5 bg-black">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-20">
-            <h2 className="text-amber-400 font-black uppercase tracking-[0.3em] text-sm mb-4 italic">Leadership & Activism</h2>
-            <h3 className="text-5xl md:text-6xl font-black text-white italic uppercase tracking-tighter">Pengalaman <span className="text-amber-400">Organisasi</span></h3>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {data.pengalaman.map((exp) => (
-              <div key={exp.id} className="group bg-zinc-900/30 border border-white/5 p-8 rounded-[2.5rem] hover:border-amber-400/40 transition-all duration-500 relative overflow-hidden flex flex-col justify-between">
-                <div className="absolute -top-20 -right-20 w-48 h-48 bg-amber-400/5 rounded-full group-hover:scale-150 transition-transform duration-700"></div>
                 
-                <div>
-                  <div className="flex justify-between items-start mb-8">
-                    <div className="bg-amber-400 text-black p-4 rounded-2xl shadow-2xl ring-8 ring-amber-400/10">
-                      {exp.icon}
-                    </div>
-                    <span className="text-xs font-black text-zinc-400 uppercase tracking-widest bg-zinc-800 px-3 py-1.5 rounded-full">{exp.periode}</span>
-                  </div>
-                  
-                  <h4 className="text-2xl font-black text-white mb-2 italic tracking-tighter uppercase group-hover:text-amber-400 transition-colors leading-tight">{exp.posisi}</h4>
-                  <p className="text-amber-400 font-black text-xs uppercase tracking-widest mb-6">{exp.organisasi}</p>
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="hover:text-primary-500 transition-colors">Beranda</a>
+                    <a href="#about" class="hover:text-primary-500 transition-colors">Tentang</a>
+                    <a href="#skills" class="hover:text-primary-500 transition-colors">Keahlian</a>
+                    <a href="#academic" class="hover:text-primary-500 transition-colors">Akademik</a>
+                    <a href="#experience" class="hover:text-primary-500 transition-colors">Organisasi & Aksi</a>
+                    <a href="#contact" class="hover:text-primary-500 transition-colors">Kontak</a>
+                    
+                    <!-- Dark Mode Toggle -->
+                    <button id="theme-toggle" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors" aria-label="Toggle Theme">
+                        <i id="theme-icon" data-lucide="moon" class="w-5 h-5 text-slate-600 dark:text-slate-300"></i>
+                    </button>
                 </div>
-                <p className="text-gray-400 text-sm leading-relaxed text-justify mt-auto">{exp.detail}</p>
-              </div>
-            ))}
-          </div>
+
+                <!-- Mobile Menu Button & Dark Mode -->
+                <div class="flex items-center space-x-4 md:hidden">
+                    <button id="theme-toggle-mobile" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors" aria-label="Toggle Theme Mobile">
+                        <i id="theme-icon-mobile" data-lucide="moon" class="w-5 h-5 text-slate-600 dark:text-slate-300"></i>
+                    </button>
+                    <button id="mobile-menu-btn" class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" aria-label="Toggle Mobile Menu">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
         </div>
-      </section>
 
-      {/* Contact Section */}
-      <section id="kontak" className="py-32 px-6">
-        <div className="max-w-5xl mx-auto bg-gradient-to-br from-amber-400 to-amber-600 rounded-[4rem] p-10 md:p-20 text-black relative overflow-hidden shadow-[0_30px_100px_rgba(251,191,36,0.3)] group">
-          <div className="absolute -top-10 -right-10 opacity-10 rotate-12 group-hover:scale-110 transition-transform duration-700">
-            <Mail size={300} />
-          </div>
+        <!-- Mobile Menu Container -->
+        <div id="mobile-menu" class="hidden md:hidden px-4 pt-2 pb-4 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 space-y-2">
+            <a href="#home" class="block py-2 px-3 rounded hover:bg-slate-100 dark:hover:bg-slate-800">Beranda</a>
+            <a href="#about" class="block py-2 px-3 rounded hover:bg-slate-100 dark:hover:bg-slate-800">Tentang</a>
+            <a href="#skills" class="block py-2 px-3 rounded hover:bg-slate-100 dark:hover:bg-slate-800">Keahlian</a>
+            <a href="#academic" class="block py-2 px-3 rounded hover:bg-slate-100 dark:hover:bg-slate-800">Akademik</a>
+            <a href="#experience" class="block py-2 px-3 rounded hover:bg-slate-100 dark:hover:bg-slate-800">Organisasi & Aksi</a>
+            <a href="#contact" class="block py-2 px-3 rounded hover:bg-slate-100 dark:hover:bg-slate-800">Kontak</a>
+        </div>
+    </nav>
 
-          <div className="relative z-10 text-center md:text-left">
-            <h3 className="text-5xl md:text-8xl font-black italic uppercase leading-none mb-8 tracking-tighter">
-              LET'S <br />BUILD TOGETHER
-            </h3>
-            <p className="text-black/80 text-xl font-bold mb-12 max-w-2xl leading-relaxed">
-              Saya siap berkolaborasi dalam manajemen proyek konstruksi, riset struktural, maupun strategi pergerakan pemuda. Hubungi saya di bawah ini.
+    <!-- Main Content -->
+    <main class="flex-grow pt-16">
+        
+        <!-- -->
+        <!-- Hero Section -->
+        <section id="home" class="min-h-[calc(100vh-4rem)] flex items-center justify-center px-4 sm:px-6 lg:px-8 relative overflow-hidden py-12">
+            <!-- Background Decorative Grid Pattern (Civil Engineering Vibe) -->
+            <div class="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px] -z-10"></div>
+            <div class="absolute top-1/4 left-1/4 w-80 h-80 bg-primary-500/10 rounded-full blur-3xl -z-10 animate-pulse"></div>
+
+            <div class="max-w-4xl mx-auto text-center space-y-6">
+                <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-primary-100 dark:bg-primary-950/50 border border-primary-200 dark:border-primary-800 text-primary-600 dark:text-primary-400 text-sm font-medium">
+                    <span class="flex h-2 w-2 relative">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-sky-500"></span>
+                    </span>
+                    <span>Mahasiswa Teknik Sipil - Semester 2</span>
+                </div>
+                <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight">
+                    M. Zaeni Dahlan
+                </h1>
+                <p class="text-xl sm:text-2xl font-semibold text-slate-600 dark:text-slate-400">
+                    Politeknik Negeri Sriwijaya
+                </p>
+                <p class="max-w-xl mx-auto text-slate-500 dark:text-slate-400 leading-relaxed">
+                    Seseorang yang berfokus dalam dunia rekayasa struktur, manajemen konstruksi, aktif berorganisasi, serta memiliki ketertarikan tinggi pada kajian strategis dan advokasi mahasiswa.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+                    <a href="#experience" class="w-full sm:w-auto px-8 py-3 rounded-xl bg-primary-500 hover:bg-primary-600 text-white font-medium shadow-lg shadow-primary-500/20 transition-all hover:scale-105 flex items-center justify-center gap-2">
+                        <span>Lihat Pengalaman</span>
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#contact" class="w-full sm:w-auto px-8 py-3 rounded-xl bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 font-medium transition-all hover:scale-105 flex items-center justify-center gap-2">
+                        <span>Hubungi via Surel</span>
+                        <i data-lucide="mail" class="w-5 h-5"></i>
+                    </a>
+                </div>
+
+                <!-- Social Links with custom SVG fallback for Instagram to prevent blank rendering -->
+                <div class="flex justify-center gap-6 pt-8">
+                    <a href="https://instagram.com/zaenidhlln_" target="_blank" class="p-3 rounded-full bg-white dark:bg-slate-900 shadow-md text-slate-600 dark:text-slate-300 hover:text-primary-500 dark:hover:text-primary-500 transition-all hover:scale-110 border border-slate-100 dark:border-slate-800 flex items-center justify-center" title="Instagram">
+                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                            <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+                        </svg>
+                    </a>
+                    <a href="mailto:zaenid07@gmail.com" class="p-3 rounded-full bg-white dark:bg-slate-900 shadow-md text-slate-600 dark:text-slate-300 hover:text-primary-500 dark:hover:text-primary-500 transition-all hover:scale-110 border border-slate-100 dark:border-slate-800 flex items-center justify-center" title="Email">
+                        <i data-lucide="mail" class="w-6 h-6"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- -->
+        <!-- About Section -->
+        <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto border-t border-slate-200 dark:border-slate-800">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <!-- Decorative Icon Grid (Sipil Vibe) -->
+                <div class="relative flex justify-center">
+                    <div class="w-64 h-64 sm:w-80 sm:h-80 rounded-2xl bg-gradient-to-br from-primary-500 to-sky-700 p-8 flex flex-col justify-between text-white shadow-2xl relative">
+                        <div class="flex justify-between items-start">
+                            <i data-lucide="building-2" class="w-12 h-12 opacity-80"></i>
+                            <span class="text-xs bg-white/20 px-3 py-1 rounded-full backdrop-blur-sm">Sejak 2007</span>
+                        </div>
+                        <div class="space-y-2">
+                            <p class="text-sm font-medium opacity-80">Asal Daerah</p>
+                            <h3 class="text-3xl font-extrabold">Palembang, Indonesia</h3>
+                            <p class="text-xs opacity-70">Lahir pada 09 Februari 2007</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text Content -->
+                <div class="space-y-6">
+                    <div class="inline-block px-3 py-1 rounded-md bg-sky-100 dark:bg-sky-950/50 text-sky-600 dark:text-sky-400 text-sm font-semibold">
+                        Tentang Saya
+                    </div>
+                    <h2 class="text-3xl font-bold">M. Zaeni Dahlan</h2>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                        Saya adalah mahasiswa aktif program studi Teknik Sipil di Politeknik Negeri Sriwijaya yang saat ini berada di semester 2. Lahir dan besar di Palembang, saya memiliki ambisi yang kuat dalam mempelajari bidang rekayasa konstruksi, struktur bangunan, serta infrastruktur berkelanjutan.
+                    </p>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                        Selain fokus pada dunia akademik teknik sipil, saya juga aktif mengasah soft skill komunikasi, negosiasi, dan advokasi melalui keterlibatan aktif di organisasi kemahasiswaan baik intra maupun ekstra kampus.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-4 pt-4">
+                        <div class="border-l-4 border-primary-500 pl-4">
+                            <h4 class="text-2xl font-bold">Teknik Sipil</h4>
+                            <p class="text-sm text-slate-500">Pendidikan Sekarang</p>
+                        </div>
+                        <div class="border-l-4 border-sky-500 pl-4">
+                            <h4 class="text-2xl font-bold">2+ Organisasi</h4>
+                            <p class="text-sm text-slate-500">Aktif & Berkelanjutan</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- -->
+        <!-- Skills & Software Section -->
+        <section id="skills" class="py-20 bg-slate-100 dark:bg-slate-900/40 border-t border-b border-slate-200 dark:border-slate-800">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center space-y-4 max-w-2xl mx-auto mb-16">
+                    <div class="inline-block px-3 py-1 rounded-md bg-primary-100 dark:bg-primary-950/50 text-primary-600 dark:text-primary-400 text-sm font-semibold">
+                        Kompetensi Saya
+                    </div>
+                    <h2 class="text-3xl font-bold">Keahlian & Perangkat Lunak</h2>
+                    <p class="text-slate-600 dark:text-slate-400">
+                        Integrasi keahlian teknis (hard skills) dalam rekayasa desain bangunan serta keahlian interpersonal (soft skills) yang dinamis.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <!-- Software Konstruksi -->
+                    <div class="space-y-6">
+                        <h3 class="text-xl font-bold flex items-center gap-2">
+                            <i data-lucide="cpu" class="text-primary-500 w-6 h-6"></i>
+                            <span>Software CAD & 3D (Beginner)</span>
+                        </h3>
+                        <div class="space-y-4">
+                            <!-- AutoCAD -->
+                            <div class="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="font-bold">AutoCAD</span>
+                                    <span class="text-xs bg-amber-100 dark:bg-amber-950/50 text-amber-600 dark:text-amber-400 px-2 py-0.5 rounded font-medium">Beginner</span>
+                                </div>
+                                <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+                                    <div class="bg-primary-500 h-full rounded-full" style="width: 40%"></div>
+                                </div>
+                                <p class="text-xs text-slate-500 mt-2">Pembuatan gambar kerja dasar 2D, pembacaan cetak biru bangunan, dan rekayasa detail sederhana.</p>
+                            </div>
+
+                            <!-- SketchUp -->
+                            <div class="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="font-bold">SketchUp</span>
+                                    <span class="text-xs bg-amber-100 dark:bg-amber-950/50 text-amber-600 dark:text-amber-400 px-2 py-0.5 rounded font-medium">Beginner</span>
+                                </div>
+                                <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+                                    <div class="bg-primary-500 h-full rounded-full" style="width: 35%"></div>
+                                </div>
+                                <p class="text-xs text-slate-500 mt-2">Pemodelan objek 3D arsitektur dasar dan visualisasi bentuk rancang ruang sederhana.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Soft Skills -->
+                    <div class="space-y-6">
+                        <h3 class="text-xl font-bold flex items-center gap-2">
+                            <i data-lucide="users-2" class="text-primary-500 w-6 h-6"></i>
+                            <span>Kekuatan Interpersonal</span>
+                        </h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <!-- Leadership -->
+                            <div class="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+                                <div class="space-y-2">
+                                    <div class="p-2 bg-indigo-100 dark:bg-indigo-950/50 text-indigo-500 rounded-lg w-fit">
+                                        <i data-lucide="shield" class="w-5 h-5"></i>
+                                    </div>
+                                    <h4 class="font-bold text-base">Leadership</h4>
+                                    <p class="text-xs text-slate-500 leading-relaxed">Berhasil memimpin agenda besar lintas instansi/universitas seperti Campus Expo 2026 serta menggerakkan tim kepanitiaan.</p>
+                                </div>
+                            </div>
+
+                            <!-- Problem Solving -->
+                            <div class="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+                                <div class="space-y-2">
+                                    <div class="p-2 bg-emerald-100 dark:bg-emerald-950/50 text-emerald-500 rounded-lg w-fit">
+                                        <i data-lucide="lightbulb" class="w-5 h-5"></i>
+                                    </div>
+                                    <h4 class="font-bold text-base">Problem Solving</h4>
+                                    <p class="text-xs text-slate-500 leading-relaxed">Kemampuan merumuskan kajian strategis taktis di Kastrat BEM serta merancang strategi taktis dalam menghadapi kendala lapangan.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- -->
+        <!-- Academic Journey Section -->
+        <section id="academic" class="py-20 bg-white dark:bg-slate-950 border-t border-b border-slate-200 dark:border-slate-800">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center space-y-4 max-w-2xl mx-auto mb-16">
+                    <div class="inline-block px-3 py-1 rounded-md bg-primary-100 dark:bg-primary-950/50 text-primary-600 dark:text-primary-400 text-sm font-semibold">
+                        Jejak Langkah
+                    </div>
+                    <h2 class="text-3xl font-bold">Riwayat Pendidikan</h2>
+                    <p class="text-slate-600 dark:text-slate-400">
+                        Perjalanan akademik dari bangku sekolah dasar hingga bangku perkuliahan di Politeknik Negeri Sriwijaya.
+                    </p>
+                </div>
+
+                <!-- Timeline -->
+                <div class="relative border-l-2 border-slate-200 dark:border-slate-800 max-w-3xl mx-auto pl-6 sm:pl-8 space-y-12">
+                    <!-- Kuliah -->
+                    <div class="relative">
+                        <span class="absolute -left-[35px] sm:-left-[43px] mt-1.5 flex h-6 w-6 sm:h-8 sm:w-8 items-center justify-center rounded-full bg-primary-500 text-white ring-8 ring-white dark:ring-slate-950">
+                            <i data-lucide="graduation-cap" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+                        </span>
+                        <div class="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm hover:border-primary-500 dark:hover:border-primary-500 transition-colors">
+                            <span class="text-xs font-bold text-primary-500 tracking-wider">Sekarang (2025 - Sekarang)</span>
+                            <h3 class="text-lg font-bold mt-1">Politeknik Negeri Sriwijaya</h3>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm mt-1 font-semibold">Mahasiswa S1 Terapan / D4 Teknik Sipil - Semester 2</p>
+                        </div>
+                    </div>
+
+                    <!-- SMA -->
+                    <div class="relative">
+                        <span class="absolute -left-[35px] sm:-left-[43px] mt-1.5 flex h-6 w-6 sm:h-8 sm:w-8 items-center justify-center rounded-full bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 ring-8 ring-white dark:ring-slate-950">
+                            <i data-lucide="school" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+                        </span>
+                        <div class="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                            <span class="text-xs font-bold text-slate-500 tracking-wider">Lulusan 2025</span>
+                            <h3 class="text-lg font-bold mt-1">SMAN 22 Palembang</h3>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm mt-1">Menyelesaikan pendidikan menengah atas dengan baik.</p>
+                        </div>
+                    </div>
+
+                    <!-- SMP -->
+                    <div class="relative">
+                        <span class="absolute -left-[35px] sm:-left-[43px] mt-1.5 flex h-6 w-6 sm:h-8 sm:w-8 items-center justify-center rounded-full bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 ring-8 ring-white dark:ring-slate-950">
+                            <i data-lucide="school" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+                        </span>
+                        <div class="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                            <h3 class="text-lg font-bold mt-1">SMP Negeri 46 Palembang</h3>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm mt-1">Pendidikan Sekolah Menengah Pertama.</p>
+                        </div>
+                    </div>
+
+                    <!-- SD -->
+                    <div class="relative">
+                        <span class="absolute -left-[35px] sm:-left-[43px] mt-1.5 flex h-6 w-6 sm:h-8 sm:w-8 items-center justify-center rounded-full bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 ring-8 ring-white dark:ring-slate-950">
+                            <i data-lucide="book-open" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+                        </span>
+                        <div class="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                            <h3 class="text-lg font-bold mt-1">SD Negeri 127 Palembang</h3>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm mt-1">Pendidikan Dasar.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- -->
+        <!-- Experience & Organisation Section -->
+        <section id="experience" class="py-20 bg-slate-100/50 dark:bg-slate-900/30 border-b border-slate-200 dark:border-slate-800">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Section Header -->
+                <div class="text-center space-y-4 max-w-2xl mx-auto mb-16">
+                    <div class="inline-block px-3 py-1 rounded-md bg-sky-100 dark:bg-sky-950/50 text-sky-600 dark:text-sky-400 text-sm font-semibold">
+                        Portofolio Aksi & Organisasi
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Pengalaman Organisasi & Kepemimpinan</h2>
+                    <p class="text-slate-600 dark:text-slate-400">
+                        Jejak dedikasi, kepemimpinan taktis, advokasi kemahasiswaan, dan rekayasa hubungan publik yang nyata.
+                    </p>
+                </div>
+
+                <!-- Modern Interactive Experience Layout -->
+                <div class="max-w-4xl mx-auto space-y-8">
+                    
+                    <!-- Card 1: BEM POLSRI (Highly Styled Featured Card) -->
+                    <div class="group relative bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-primary-500 dark:hover:border-primary-500 p-6 sm:p-8 shadow-sm hover:shadow-xl transition-all duration-300">
+                        <!-- Left Accent Bar -->
+                        <div class="absolute top-0 bottom-0 left-0 w-1.5 bg-gradient-to-b from-primary-500 to-indigo-600 rounded-l-2xl"></div>
+                        
+                        <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 pl-2 sm:pl-4">
+                            <!-- Left Header -->
+                            <div class="space-y-1">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-sky-100 dark:bg-sky-950/50 text-sky-800 dark:text-sky-300">
+                                    Organisasi Kampus (BEM)
+                                </span>
+                                <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mt-2 group-hover:text-primary-500 transition-colors">
+                                    Staff Muda BEM POLSRI
+                                </h3>
+                                <p class="text-sm font-semibold text-slate-500 dark:text-slate-400">
+                                    Departemen Kastrat | Divisi Aksi, Strategi & Propaganda
+                                </p>
+                            </div>
+                            <!-- Right Period Badge -->
+                            <div class="flex items-center gap-1.5 bg-slate-100 dark:bg-slate-800 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 dark:text-slate-300 w-fit">
+                                <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+                                <span>Periode 2026</span>
+                            </div>
+                        </div>
+
+                        <!-- Card Body / Achievements -->
+                        <div class="mt-6 pl-2 sm:pl-4 space-y-4">
+                            <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 leading-relaxed">
+                                Bertanggung jawab secara taktis dalam memetakan isu sosial-politik kampus maupun nasional, serta merumuskan strategi gerakan yang inklusif untuk mahasiswa Politeknik Negeri Sriwijaya.
+                            </p>
+                            <!-- Key Accomplishments with customized checklist -->
+                            <div class="space-y-2.5 pt-2">
+                                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest">Aksi & Tanggung Jawab Utama:</h4>
+                                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-slate-600 dark:text-slate-400">
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check-circle-2" class="w-4 h-4 text-primary-500 mt-0.5 flex-shrink-0"></i>
+                                        <span>Menyusun draf naskah aksi & esai propaganda edukatif.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check-circle-2" class="w-4 h-4 text-primary-500 mt-0.5 flex-shrink-0"></i>
+                                        <span>Menggerakkan konsolidasi serta analisis isu strategis.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check-circle-2" class="w-4 h-4 text-primary-500 mt-0.5 flex-shrink-0"></i>
+                                        <span>Merancang aksi massa damai & advokasi kebijakan kampus.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check-circle-2" class="w-4 h-4 text-primary-500 mt-0.5 flex-shrink-0"></i>
+                                        <span>Menjalin komunikasi antar-divisi propaganda internal.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <!-- Skill Tags -->
+                            <div class="flex flex-wrap gap-2 pt-3 border-t border-slate-100 dark:border-slate-800">
+                                <span class="text-[11px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2.5 py-1 rounded-md">#KajianStrategis</span>
+                                <span class="text-[11px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2.5 py-1 rounded-md">#PropagandaMedia</span>
+                                <span class="text-[11px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2.5 py-1 rounded-md">#Oratorical</span>
+                                <span class="text-[11px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2.5 py-1 rounded-md">#AksiMassa</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Ketua Pelaksana Campus Expo (Highlight Leadership Card) -->
+                    <div class="group relative bg-white dark:bg-slate-900 rounded-2xl border-2 border-amber-400 dark:border-amber-500/50 hover:border-amber-500 dark:hover:border-amber-500 p-6 sm:p-8 shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden">
+                        <!-- Featured Top Badge -->
+                        <div class="absolute top-0 right-0 bg-gradient-to-l from-amber-500 to-orange-500 text-white text-[10px] uppercase font-extrabold px-4 py-1.5 rounded-bl-xl tracking-wider shadow">
+                            Pencapaian Utama
+                        </div>
+                        <!-- Left Accent Bar -->
+                        <div class="absolute top-0 bottom-0 left-0 w-1.5 bg-gradient-to-b from-amber-400 to-orange-500 rounded-l-2xl"></div>
+
+                        <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 pl-2 sm:pl-4">
+                            <!-- Left Header -->
+                            <div class="space-y-1">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-100 dark:bg-amber-950/50 text-amber-800 dark:text-amber-300">
+                                    Kepemimpinan Utama & Event Organizer
+                                </span>
+                                <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mt-2 group-hover:text-amber-500 transition-colors flex items-center gap-2">
+                                    <span>Ketua Pelaksana Campus Expo 2026</span>
+                                    <i data-lucide="crown" class="w-5 h-5 text-amber-500"></i>
+                                </h3>
+                                <p class="text-sm font-semibold text-amber-600 dark:text-amber-400">
+                                    SMAN 22 Palembang
+                                </p>
+                            </div>
+                            <!-- Right Period Badge -->
+                            <div class="flex items-center gap-1.5 bg-slate-100 dark:bg-slate-800 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 dark:text-slate-300 w-fit">
+                                <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+                                <span>Tahun 2026</span>
+                            </div>
+                        </div>
+
+                        <!-- Card Body / Achievements -->
+                        <div class="mt-6 pl-2 sm:pl-4 space-y-4">
+                            <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 leading-relaxed">
+                                Memimpin penuh seluruh kepanitian dalam merancang, melaksanakan, dan menyukseskan pameran perguruan tinggi (*Campus Expo*) di SMAN 22 Palembang yang mempertemukan puluhan universitas besar dengan ratusan siswa kelas XII.
+                            </p>
+                            <!-- Key Accomplishments with customized checklist -->
+                            <div class="space-y-2.5 pt-2">
+                                <h4 class="text-xs font-bold text-amber-500 dark:text-amber-400 uppercase tracking-widest">Keberhasilan Kepemimpinan:</h4>
+                                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-slate-600 dark:text-slate-400">
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="trophy" class="w-4 h-4 text-amber-500 mt-0.5 flex-shrink-0"></i>
+                                        <span>Mengatur dan mendistribusikan tugas kepanitiaan untuk 50+ orang staf.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="trophy" class="w-4 h-4 text-amber-500 mt-0.5 flex-shrink-0"></i>
+                                        <span>Berhasil menegosiasikan kehadiran puluhan instansi & universitas.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="trophy" class="w-4 h-4 text-amber-500 mt-0.5 flex-shrink-0"></i>
+                                        <span>Mengelola anggaran kepanitiaan secara transparan dan efisien.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="trophy" class="w-4 h-4 text-amber-500 mt-0.5 flex-shrink-0"></i>
+                                        <span>Meningkatkan angka partisipasi kunjungan siswa secara signifikan.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <!-- Skill Tags -->
+                            <div class="flex flex-wrap gap-2 pt-3 border-t border-slate-100 dark:border-slate-800">
+                                <span class="text-[11px] font-bold bg-amber-50 dark:bg-amber-950/30 text-amber-600 dark:text-amber-400 px-2.5 py-1 rounded-md">#EventManagement</span>
+                                <span class="text-[11px] font-bold bg-amber-50 dark:bg-amber-950/30 text-amber-600 dark:text-amber-400 px-2.5 py-1 rounded-md">#TeamDelegation</span>
+                                <span class="text-[11px] font-bold bg-amber-50 dark:bg-amber-950/30 text-amber-600 dark:text-amber-400 px-2.5 py-1 rounded-md">#PublicSpeaking</span>
+                                <span class="text-[11px] font-bold bg-amber-50 dark:bg-amber-950/30 text-amber-600 dark:text-amber-400 px-2.5 py-1 rounded-md">#Budgeting</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Rohis Fiisabilillah SMAN 22 (PR Card) -->
+                    <div class="group relative bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-sky-500 dark:hover:border-sky-500 p-6 sm:p-8 shadow-sm hover:shadow-xl transition-all duration-300">
+                        <!-- Left Accent Bar -->
+                        <div class="absolute top-0 bottom-0 left-0 w-1.5 bg-gradient-to-b from-sky-400 to-sky-600 rounded-l-2xl"></div>
+
+                        <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 pl-2 sm:pl-4">
+                            <!-- Left Header -->
+                            <div class="space-y-1">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-sky-100 dark:bg-sky-950/50 text-sky-800 dark:text-sky-300">
+                                    Hubungan Masyarakat & Syiar
+                                </span>
+                                <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mt-2 group-hover:text-sky-500 transition-colors">
+                                    Rohis Fiisabilillah SMAN 22
+                                </h3>
+                                <p class="text-sm font-semibold text-sky-500">
+                                    Ketua Bidang Hubungan Masyarakat (Humas)
+                                </p>
+                            </div>
+                            <!-- Right Period Badge -->
+                            <div class="flex items-center gap-1.5 bg-slate-100 dark:bg-slate-800 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 dark:text-slate-300 w-fit">
+                                <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+                                <span>2024 - 2025</span>
+                            </div>
+                        </div>
+
+                        <!-- Card Body / Achievements -->
+                        <div class="mt-6 pl-2 sm:pl-4 space-y-4">
+                            <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 leading-relaxed">
+                                Bertindak sebagai poros utama dalam membangun jejaring eksternal organisasi, menjembatani komunikasi ke pihak sekolah, alumni, komite, serta mengelola publikasi kegiatan dakwah sekolah.
+                            </p>
+                            <!-- Key Accomplishments with customized checklist -->
+                            <div class="space-y-2.5 pt-2">
+                                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest">Aktivitas Utama & Jaringan:</h4>
+                                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-slate-600 dark:text-slate-400">
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check-circle-2" class="w-4 h-4 text-sky-500 mt-0.5 flex-shrink-0"></i>
+                                        <span>Menjaga korespondensi resmi dengan pihak alumni dan organisasi mitra.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check-circle-2" class="w-4 h-4 text-sky-500 mt-0.5 flex-shrink-0"></i>
+                                        <span>Mendesain publikasi digital untuk mempromosikan kajian rohani.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check-circle-2" class="w-4 h-4 text-sky-500 mt-0.5 flex-shrink-0"></i>
+                                        <span>Mengoordinasikan agenda bakti sosial tahunan sekolah.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check-circle-2" class="w-4 h-4 text-sky-500 mt-0.5 flex-shrink-0"></i>
+                                        <span>Memimpin tim Humas dalam pelaporan pertanggungjawaban.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <!-- Skill Tags -->
+                            <div class="flex flex-wrap gap-2 pt-3 border-t border-slate-100 dark:border-slate-800">
+                                <span class="text-[11px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2.5 py-1 rounded-md">#PublicRelations</span>
+                                <span class="text-[11px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2.5 py-1 rounded-md">#AdvokasiPublik</span>
+                                <span class="text-[11px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2.5 py-1 rounded-md">#KomunikasiPersuasif</span>
+                                <span class="text-[11px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2.5 py-1 rounded-md">#SyiarCreative</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- -->
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto border-t border-slate-200 dark:border-slate-800">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- Left Details -->
+                <div class="space-y-6">
+                    <div class="inline-block px-3 py-1 rounded-md bg-sky-100 dark:bg-sky-950/50 text-sky-600 dark:text-sky-400 text-sm font-semibold">
+                        Hubungi Saya
+                    </div>
+                    <h2 class="text-3xl font-bold">Mari Terhubung & Berdiskusi</h2>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                        Saya sangat terbuka untuk berdiskusi seputar ketekniksipilan, kolaborasi organisasi, kajian mahasiswa, maupun kerja sama kepanitiaan. Silakan hubungi saya melalui jalur komunikasi berikut.
+                    </p>
+
+                    <div class="space-y-4 pt-4">
+                        <!-- Gmail -->
+                        <div class="flex items-center gap-4">
+                            <div class="p-3 rounded-lg bg-slate-100 dark:bg-slate-900 text-primary-500">
+                                <i data-lucide="mail" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-xs text-slate-400">Email Pribadi</h5>
+                                <a href="mailto:zaenid07@gmail.com" class="font-medium hover:text-primary-500">zaenid07@gmail.com</a>
+                            </div>
+                        </div>
+
+                        <!-- Instagram -->
+                        <div class="flex items-center gap-4">
+                            <div class="p-3 rounded-lg bg-slate-100 dark:bg-slate-900 text-primary-500 flex items-center justify-center">
+                                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h5 class="text-xs text-slate-400">Instagram Resmi</h5>
+                                <a href="https://instagram.com/zaenidhlln_" target="_blank" class="font-medium hover:text-primary-500">@zaenidhlln_</a>
+                            </div>
+                        </div>
+
+                        <!-- Lokasi -->
+                        <div class="flex items-center gap-4">
+                            <div class="p-3 rounded-lg bg-slate-100 dark:bg-slate-900 text-primary-500">
+                                <i data-lucide="map-pin" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-xs text-slate-400">Lokasi Saat Ini</h5>
+                                <span class="font-medium">Palembang, Sumatera Selatan</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Form Box (Simulasi Hubungi) -->
+                <div class="bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800">
+                    <form id="contact-form" onsubmit="handleContactSubmit(event)" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium mb-2">Nama Lengkap</label>
+                            <input type="text" id="name" required class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 focus:ring-2 focus:ring-primary-500 focus:outline-none transition-all">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium mb-2">Alamat Email / Kontak</label>
+                            <input type="text" id="email" required class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 focus:ring-2 focus:ring-primary-500 focus:outline-none transition-all">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium mb-2">Pesan Anda</label>
+                            <textarea id="message" rows="4" required class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 focus:ring-2 focus:ring-primary-500 focus:outline-none transition-all" placeholder="Ada yang bisa saya bantu?"></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-3 bg-primary-500 hover:bg-primary-600 text-white font-medium rounded-xl transition-colors flex items-center justify-center gap-2">
+                            <span>Kirim Pesan</span>
+                            <i data-lucide="send" class="w-4 h-4"></i>
+                        </button>
+                    </form>
+                    <!-- Success Notification Box -->
+                    <div id="success-box" class="hidden mt-4 p-4 bg-emerald-100 dark:bg-emerald-950/50 border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300 rounded-xl flex items-center gap-2">
+                        <i data-lucide="check-circle" class="w-5 h-5 flex-shrink-0"></i>
+                        <p class="text-sm font-medium">Terima kasih! Pesan simulasi Anda berhasil dikirim.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-8 transition-colors duration-300">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p class="text-sm text-slate-500">
+                &copy; 2026 M. Zaeni Dahlan. Seluruh hak cipta dilindungi.
             </p>
-
-            <div className="flex flex-col md:flex-row gap-6 items-center">
-              <a href={`mailto:${data.email}`} className="bg-black text-white px-10 py-6 rounded-3xl font-black text-xl flex items-center gap-4 hover:scale-105 transition shadow-2xl no-underline group/btn">
-                <Mail size={24} className="group-hover/btn:animate-bounce" /> {data.email}
-              </a>
-              <div className="flex gap-4">
-                <a href={`https://instagram.com/${data.instagram}`} target="_blank" rel="noopener noreferrer" className="p-6 bg-black/10 rounded-full hover:bg-black hover:text-white transition shadow-lg text-black">
-                  <Instagram size={32} />
+            <div class="flex items-center gap-4 text-sm text-slate-500">
+                <a href="#home" class="hover:text-primary-500 transition-colors">Beranda</a>
+                <span>&bull;</span>
+                <a href="https://github.com" target="_blank" class="hover:text-primary-500 transition-colors flex items-center gap-1">
+                    <i data-lucide="github" class="w-4 h-4"></i> GitHub Pages
                 </a>
-                <a href="#" className="p-6 bg-black/10 rounded-full hover:bg-black hover:text-white transition shadow-lg text-black">
-                  <Linkedin size={32} />
-                </a>
-              </div>
             </div>
-
-            <div className="mt-16 pt-10 border-t border-black/10 flex flex-wrap justify-center md:justify-start gap-10">
-              <div className="flex items-center gap-3">
-                <MapPin size={20} />
-                <span className="font-black uppercase tracking-widest text-sm">{data.lokasi}</span>
-              </div>
-              <div className="flex items-center gap-3 font-black uppercase tracking-widest text-sm">
-                <BookOpen size={20} />
-                <span>Polsri Civil Eng & Activism</span>
-              </div>
-            </div>
-          </div>
         </div>
+    </footer>
 
-        <footer className="mt-20 text-center">
-          <div className="text-[10px] font-black uppercase tracking-[1em] text-zinc-700 italic">
-            &copy; {new Date().getFullYear()} {data.nama} &bull; Palembang &bull; Indonesia
-          </div>
-        </footer>
-      </section>
-      
-    </div>
-  );
-};
+    <!-- -->
+    <!-- Script Utama -->
+    <script>
+        // Inisialisasi ikon Lucide
+        lucide.createIcons();
 
-export default App;
+        // Dark/Light Theme Toggle
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleMobileBtn = document.getElementById('theme-toggle-mobile');
+        const themeIcon = document.getElementById('theme-icon');
+        const themeIconMobile = document.getElementById('theme-icon-mobile');
+
+        // Cek preferensi user saat loading halaman
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            updateThemeIcons(true);
+        } else {
+            document.documentElement.classList.remove('dark');
+            updateThemeIcons(false);
+        }
+
+        function updateThemeIcons(isDark) {
+            if (isDark) {
+                themeIcon.setAttribute('data-lucide', 'sun');
+                themeIconMobile.setAttribute('data-lucide', 'sun');
+            } else {
+                themeIcon.setAttribute('data-lucide', 'moon');
+                themeIconMobile.setAttribute('data-lucide', 'moon');
+            }
+            lucide.createIcons();
+        }
+
+        function toggleTheme() {
+            const isDark = document.documentElement.classList.toggle('dark');
+            localStorage.setItem('color-theme', isDark ? 'dark' : 'light');
+            updateThemeIcons(isDark);
+        }
+
+        themeToggleBtn.addEventListener('click', toggleTheme);
+        themeToggleMobileBtn.addEventListener('click', toggleTheme);
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Sembunyikan mobile menu setelah mengklik link
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Form Kontak Simulasi
+        function handleContactSubmit(event) {
+            event.preventDefault();
+            const form = document.getElementById('contact-form');
+            const successBox = document.getElementById('success-box');
+
+            // Tampilkan pesan sukses dan kosongkan form
+            successBox.classList.remove('hidden');
+            form.reset();
+
+            // Sembunyikan notifikasi setelah 5 detik
+            setTimeout(() => {
+                successBox.classList.add('hidden');
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
